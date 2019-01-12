@@ -3,13 +3,16 @@ class myStorage {
         if (!localStorage.getItem(key)) {
             localStorage.setItem(key, JSON.stringify([]));
         }
-        let tmpArray = localStorage.getItem(key);
-        console.debug(tmpArray);
+        let tmpArray = JSON.parse(localStorage.getItem(key));
         tmpArray.push(value);
-        localStorage.setItem(key, tmpArray);
+        localStorage.setItem(key, JSON.stringify(tmpArray));
     }
     getItem (key) {
-        return JSON.parse(localStorage.getItem(key));
+        let storedData = localStorage.getItem(key)
+        if (storedData.includes('[')) {
+            return JSON.parse(storedData);
+        }
+        return storedData
     }
     incrementScore() {
         localStorage.setItem('score', parseInt(localStorage.getItem('score')) + 1);
@@ -22,6 +25,11 @@ class myStorage {
     }
     resetLife() {
         localStorage.setItem('life', 3);
+    }
+    initialize() {
+        this.resetScore();
+        this.resetLife();
+        localStorage.setItem('setup', 'completed');
     }
 
     // faudra reset les questions deja faite au reset  ------- TODO

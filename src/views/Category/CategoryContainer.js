@@ -15,6 +15,7 @@ class CategoryContainer extends Component {
             answer: ''
         }
         this.changeAnswerValue = this.changeAnswerValue.bind(this);
+        this.submitAnswer = this.submitAnswer.bind(this);
     }
     componentDidMount() {
         Api.getCategoryName(this.props.match.params.name).then(resp => {
@@ -22,32 +23,54 @@ class CategoryContainer extends Component {
                 name: resp
             });
         })
+        this.generateQuestion();
+    }
+    generateQuestion() {
         Api.getQuestionsByCategoryId(this.props.match.params.name).then(resp => {
             let questionsReceived = resp;
             let questionsDone = LocalStorage.getItem(this.props.match.params.name);
             if (questionsDone) {
-                questionsReceived.filter(question => {
+                questionsReceived = questionsReceived.filter(question => {
                     return !questionsDone.includes(question.id)
                 });
             }
+            if (questionsReceived.length === 0) {
+                this.props.history.push('/');
+            }
             return questionsReceived;
         }).then(questions => {
-            let questionNumber = Math.round(Math.random() * questions.length);
+            let random = Math.random() * questions.length
+            let questionNumber = Math.floor(random);
             this.setState({
                 question: questions[questionNumber]
             });
-            console.warn(`{!!! For tester's time !!!
+
+            console.warn(`!!! For tester's time !!!
 the answer is : ${this.state.question.answer}`)
         })
     }
-    submitAnswerIfKeyCodeIsEnter(event) {
-        console.debug(event);
-        console.debug('check code');
-    }
     submitAnswer(event) {
         event.preventDefault();
-        console.debug(event);
-        console.debug('submitted');;
+        if (this.state.answer === this.state.question.answer) {
+            LocalStorage.saveItem(this.props.match.params.name, this.state.question.id);
+            LocalStorage.incrementScore();
+            this.setState({
+                answer: ''
+            })
+
+            if (LocalStorage.getItem('score') === 10) {
+                this.props.history.push('/victory');
+            }
+            else {
+                this.generateQuestion();
+            }
+        }
+        else {
+            LocalStorage.decrementLife();
+            if (LocalStorage.getItem('life') === 0) {
+                this.props.history.push('/gameover')
+            }
+        }
     }
     changeAnswerValue(event) {
         this.setState({

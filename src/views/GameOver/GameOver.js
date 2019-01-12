@@ -1,14 +1,13 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
-const Category = ({ categoryName }) => (
+const GameOver = ({ categoryName }) => (
     <section>
-        <h1>Category : placeholder</h1>
+        <h1>Loser</h1>
     </section>
 );
 
-Category.PropTypes = {
+GameOver.PropTypes = {
     // categoryName: PropTypes.string.isRequired,
 }
 
-export default Category;
+export default GameOver;

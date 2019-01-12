@@ -1,17 +1,17 @@
 
 import React, { Component } from 'react';
-import GameOver from './GameOver';
+import Victory from './Victory';
 import { withRouter } from 'react-router-dom';
 
-class GameOverContainer extends Component {
+class VictoryContainer extends Component {
     componentDidMount() {
         
     }
     render () {
         return (
-            <GameOver></GameOver>
+            <Victory></Victory>
         );
     }
 }
 
-export default withRouter(GameOverContainer);
+export default withRouter(VictoryContainer);

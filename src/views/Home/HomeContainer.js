@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Home from './Home';
 import PropTypes from 'prop-types';
+import LocalStorage from './../../helpers/LocalStorage';
 
 
 const Form = ({reply, replyCallback}) => (
@@ -13,8 +14,7 @@ const Form = ({reply, replyCallback}) => (
 Form.propTypes = {
     reply: PropTypes.string.isRequired,
     replyCallback: PropTypes.func.isRequired 
-}       
-  
+}
 
 class HomeContainer extends Component {
     constructor(props) {
@@ -46,6 +46,9 @@ class HomeContainer extends Component {
 
     componentDidMount() {
         fetch('http://jservice.io/api/categories?count=30').then(response => { 
+            if (LocalStorage.getItem('setup') !== 'completed') {
+                LocalStorage.initialize();
+            }
             response.json().then(categories => {
                 this.setState({ 
                     categories: categories,
