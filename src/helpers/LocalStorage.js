@@ -23,6 +23,11 @@ class myStorage {
     resetLife() {
         localStorage.setItem('life', 3);
     }
+    initialize() {
+        this.resetScore();
+        this.resetLife();
+        localStorage.setItem('setup', 'completed');
+    }
 
     // faudra reset les questions deja faite au reset  ------- TODO
 }
