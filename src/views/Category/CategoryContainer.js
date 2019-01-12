@@ -23,17 +23,29 @@ class CategoryContainer extends Component {
                 name: resp
             });
         })
+        this.generateQuestion();
+    }
+    generateQuestion() {
         Api.getQuestionsByCategoryId(this.props.match.params.name).then(resp => {
             let questionsReceived = resp;
+            console.debug(questionsReceived);
             let questionsDone = LocalStorage.getItem(this.props.match.params.name);
             if (questionsDone) {
-                questionsReceived.filter(question => {
+                console.debug(questionsDone);
+                questionsReceived = questionsReceived.filter(question => {
                     return !questionsDone.includes(question.id)
                 });
             }
+            if (questionsReceived.length === 0) {
+                this.props.history.push('/');
+            }
+            console.debug(questionsReceived);
             return questionsReceived;
         }).then(questions => {
-            let questionNumber = Math.round(Math.random() * questions.length);
+            console.debug(questions.length);
+            let random = Math.random() * questions.length
+            let questionNumber = Math.floor(random);
+            console.debug(questionNumber);
             this.setState({
                 question: questions[questionNumber]
             });
@@ -48,9 +60,14 @@ the answer is : ${this.state.question.answer}`)
         if (this.state.answer === this.state.question.answer) {
             LocalStorage.saveItem(this.props.match.params.name, this.state.question.id);
             LocalStorage.incrementScore();
+            this.setState({
+                answer: ''
+            })
+
+            this.generateQuestion();
         }
         else {
-            LocalStorage.loseLife();
+            LocalStorage.decrementLife();
             if (LocalStorage.getItem('life') === 0) {
                 this.props.history.push('/gameover')
             }

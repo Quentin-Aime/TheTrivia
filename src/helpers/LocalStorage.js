@@ -3,12 +3,13 @@ class myStorage {
         if (!localStorage.getItem(key)) {
             localStorage.setItem(key, JSON.stringify([]));
         }
-        let tmpArray = localStorage.getItem(key);
+        let tmpArray = JSON.parse(localStorage.getItem(key));
         console.debug(tmpArray);
         tmpArray.push(value);
-        localStorage.setItem(key, tmpArray);
+        localStorage.setItem(key, JSON.stringify(tmpArray));
     }
     getItem (key) {
+        console.debug(JSON.parse(localStorage.getItem(key)));
         return JSON.parse(localStorage.getItem(key));
     }
     incrementScore() {

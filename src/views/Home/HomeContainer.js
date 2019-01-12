@@ -9,9 +9,9 @@ class HomeContainer extends Component {
         isLoading: true,
     }
     componentDidMount() {
-        // if (LocalStorage.getItem('setup') !== 'completed') {
-        //     LocalStorage.initialize();
-        // }
+        if (LocalStorage.getItem('setup') !== 'completed') {
+            LocalStorage.initialize();
+        }
         fetch('http://jservice.io/api/categories?count=30').then(response => {
             response.json().then(categories => {
                 this.setState({
