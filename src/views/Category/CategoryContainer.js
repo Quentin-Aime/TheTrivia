@@ -71,6 +71,10 @@ the answer is : ${this.state.question.answer}`)
             }
         }
     }
+    reset() {
+        LocalStorage.initialize();
+        this.props.history.match('/');
+    }
     changeAnswerValue(event) {
         this.setState({
             answer: event.target.value
@@ -84,6 +88,7 @@ the answer is : ${this.state.question.answer}`)
                 answer={this.state.answer}
                 submitCallback={this.submitAnswer}
                 changeAnswerValue={this.changeAnswerValue}
+                resetCallback={this.reset}
             ></Category>
         );
     }

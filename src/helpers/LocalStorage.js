@@ -9,7 +9,7 @@ class myStorage {
     }
     getItem (key) {
         let storedData = localStorage.getItem(key)
-        if (storedData.includes('[')) {
+        if (storedData && storedData.includes('[')) {
             return JSON.parse(storedData);
         }
         return storedData
@@ -31,7 +31,6 @@ class myStorage {
         this.resetLife();
         localStorage.setItem('setup', 'completed');
     }
-
     // faudra reset les questions deja faite au reset  ------- TODO
 }
 

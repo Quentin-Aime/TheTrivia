@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Category = ({ categoryName, question, answer, submitCallback, changeAnswerValue }) => (
+const Category = ({ categoryName, question, answer, submitCallback, changeAnswerValue, resetCallback }) => (
     <section>
         <h1>{categoryName}</h1>
         <h3>{question.question}</h3>
@@ -18,7 +18,8 @@ Category.propTypes = {
     question: PropTypes.object.isRequired,
     answer: PropTypes.string.isRequired,
     submitCallback: PropTypes.func.isRequired,
-    changeAnswerValue: PropTypes.func.isRequired
+    changeAnswerValue: PropTypes.func.isRequired,
+    resetCallback: PropTypes.func.isRequired
 }
 
 export default Category;

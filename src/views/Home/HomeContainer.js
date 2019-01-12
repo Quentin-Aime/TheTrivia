@@ -14,6 +14,7 @@ class HomeContainer extends Component {
         }
         fetch('http://jservice.io/api/categories?count=30').then(response => {
             response.json().then(categories => {
+                console.debug(categories);
                 this.setState({
                     categories: categories,
                     isLoading: false,

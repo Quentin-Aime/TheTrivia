@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const GameOver = ({ categoryName }) => (
+const GameOver = ({resetCallback}) => (
     <section>
         <h1>Loser</h1>
     </section>
 );
 
 GameOver.PropTypes = {
-    // categoryName: PropTypes.string.isRequired,
+    resetCallback: PropTypes.func.isRequired
 }
 
 export default GameOver;

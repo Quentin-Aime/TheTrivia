@@ -1,13 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const Victory = ({ categoryName }) => (
+const Victory = ({resetCallback}) => (
     <section>
         <h1>Winner winner trivia killer !!</h1>
     </section>
 );
 
 Victory.PropTypes = {
-    // categoryName: PropTypes.string.isRequired,
+    resetCallback: PropTypes.func.isRequired
 }
 
 export default Victory;
