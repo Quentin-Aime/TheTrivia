@@ -4,13 +4,15 @@ class myStorage {
             localStorage.setItem(key, JSON.stringify([]));
         }
         let tmpArray = JSON.parse(localStorage.getItem(key));
-        console.debug(tmpArray);
         tmpArray.push(value);
         localStorage.setItem(key, JSON.stringify(tmpArray));
     }
     getItem (key) {
-        console.debug(JSON.parse(localStorage.getItem(key)));
-        return JSON.parse(localStorage.getItem(key));
+        let storedData = localStorage.getItem(key)
+        if (storedData.includes('[')) {
+            return JSON.parse(storedData);
+        }
+        return storedData
     }
     incrementScore() {
         localStorage.setItem('score', parseInt(localStorage.getItem('score')) + 1);

@@ -28,10 +28,8 @@ class CategoryContainer extends Component {
     generateQuestion() {
         Api.getQuestionsByCategoryId(this.props.match.params.name).then(resp => {
             let questionsReceived = resp;
-            console.debug(questionsReceived);
             let questionsDone = LocalStorage.getItem(this.props.match.params.name);
             if (questionsDone) {
-                console.debug(questionsDone);
                 questionsReceived = questionsReceived.filter(question => {
                     return !questionsDone.includes(question.id)
                 });
@@ -39,13 +37,10 @@ class CategoryContainer extends Component {
             if (questionsReceived.length === 0) {
                 this.props.history.push('/');
             }
-            console.debug(questionsReceived);
             return questionsReceived;
         }).then(questions => {
-            console.debug(questions.length);
             let random = Math.random() * questions.length
             let questionNumber = Math.floor(random);
-            console.debug(questionNumber);
             this.setState({
                 question: questions[questionNumber]
             });
@@ -55,8 +50,6 @@ the answer is : ${this.state.question.answer}`)
     }
     submitAnswer(event) {
         event.preventDefault();
-        console.debug(event);
-        console.debug('submitted');
         if (this.state.answer === this.state.question.answer) {
             LocalStorage.saveItem(this.props.match.params.name, this.state.question.id);
             LocalStorage.incrementScore();
@@ -64,7 +57,12 @@ the answer is : ${this.state.question.answer}`)
                 answer: ''
             })
 
-            this.generateQuestion();
+            if (LocalStorage.getItem('score') === 10) {
+                this.props.history.push('/victory');
+            }
+            else {
+                this.generateQuestion();
+            }
         }
         else {
             LocalStorage.decrementLife();
