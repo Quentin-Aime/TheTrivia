@@ -18,10 +18,11 @@ const Home = ({ categories, isLoading }) => (
                 </div>
             )}
             </div>
-            : <div> Loading </div>
+            : <div> Loading </div>            
         }
     </section>
 );
+
 
 Home.propTypes = {
     categories: PropTypes.arrayOf(

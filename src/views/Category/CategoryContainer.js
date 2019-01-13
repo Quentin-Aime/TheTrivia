@@ -44,6 +44,7 @@ class CategoryContainer extends Component {
             this.setState({
                 question: questions[questionNumber]
             });
+
             console.warn(`!!! For tester's time !!!
 the answer is : ${this.state.question.answer}`)
         })
