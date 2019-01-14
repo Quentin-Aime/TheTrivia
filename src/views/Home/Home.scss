@@ -1,0 +1,27 @@
+$font-color: #ffffff;
+
+.homepage{
+    &-title{
+      margin-top: 1%;
+      margin-bottom: 1%;      
+      font-size: 80px;
+      color: $font-color;
+    }
+    &-categories{
+      margin-top: 1%;
+      margin-bottom: 1%; 
+    }
+    &-loading{
+      color: $font-color;
+      font-size: 18px;
+    }
+    &-input{
+        width: 20%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+  }

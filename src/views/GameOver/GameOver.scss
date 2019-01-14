@@ -1,0 +1,9 @@
+$font-color: #ffffff;
+
+.gameover{
+    &-title{
+        margin-top: 20%;
+        font-size: 90px;
+        color: $font-color;
+    }
+}

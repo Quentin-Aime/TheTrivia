@@ -5,7 +5,7 @@ import LocalStorage from './../../helpers/LocalStorage';
 
 
 const Form = ({reply, replyCallback}) => (
-    <input
+    <input className="homepage-input"
         placeholder="Search"
         value={reply}
         onChange={replyCallback} 

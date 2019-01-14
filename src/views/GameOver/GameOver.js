@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const GameOver = ({resetCallback}) => (
-    <section>
-        <h1>Loser</h1>
+    <section className="gameover-section">
+        <h1 className="gameover-title">Loser</h1>
     </section>
 );
 
