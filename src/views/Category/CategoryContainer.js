@@ -58,7 +58,7 @@ the answer is : ${this.state.question.answer}`)
                 answer: ''
             })
 
-            if (LocalStorage.getItem('score') === 10) {
+            if (LocalStorage.getItem('score') >= 10) {
                 this.props.history.push('/victory');
             }
             else {

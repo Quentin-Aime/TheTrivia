@@ -2,13 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Category = ({ categoryName, question, answer, submitCallback, changeAnswerValue, resetCallback }) => (
-    <section>
-        <h1>{categoryName}</h1>
-        <h3>{question.question}</h3>
-        <hr></hr>
+    <section className="category-section">
+        <h1 className="category-title">{categoryName}</h1>
+        <h3 className="category-question">{question.question}</h3>
+        <hr className="category-hr"></hr>
         <form onSubmit={submitCallback}>
-            <input placeholder="answer" name="answer" value={answer} onChange={changeAnswerValue}></input>
-            <button>Submit</button>
+            <input className="category-input" placeholder="answer" name="answer" value={answer} onChange={changeAnswerValue}></input>
+            <button className="category-submit">Submit</button>
         </form>
     </section>
 );

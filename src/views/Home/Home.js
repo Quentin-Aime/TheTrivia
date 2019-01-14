@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 const Home = ({ categories, isLoading }) => (
-    <section>
-        <h1>Homepage</h1>
+    <section className="homepage-section">
+        <h1 className="homepage-title">Trivia</h1>
         {!isLoading ?
-            <div>
+            <div className="homepage-categories">
             {categories.length > 0 && (
                 <div>
                 {categories.map(category => (
@@ -18,7 +18,7 @@ const Home = ({ categories, isLoading }) => (
                 </div>
             )}
             </div>
-            : <div> Loading </div>            
+            : <div className="homepage-loading"> Loading </div>            
         }
     </section>
 );
