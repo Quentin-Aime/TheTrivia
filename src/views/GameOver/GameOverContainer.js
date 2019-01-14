@@ -2,6 +2,7 @@ import LocalStorage from './../../helpers/LocalStorage';
 import React, { Component } from 'react';
 import GameOver from './GameOver';
 import { withRouter } from 'react-router-dom';
+import Reset from '../../components/Reset/Reset';
 
 class GameOverContainer extends Component {
     constructor(props) {
@@ -13,13 +14,18 @@ class GameOverContainer extends Component {
     }
     reset() {
         LocalStorage.initialize();
-        this.props.history.match('/');
+        this.props.history.push('/');
     }
     render () {
         return (
-            <GameOver
-                resetCallback={this.reset}
-            ></GameOver>
+            <div>
+                <GameOver
+                    resetCallback={this.reset}
+                ></GameOver>
+                <Reset
+                reset={this.reset}
+                ></Reset>
+            </div>
         );
     }
 }

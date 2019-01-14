@@ -4,6 +4,9 @@ import { withRouter } from 'react-router-dom';
 import Api from './../../helpers/Api';
 // import Interaction from './../../helpers/Interaction';
 import LocalStorage from './../../helpers/LocalStorage';
+import Score from '../../components/Score/Score';
+import Life from '../../components/Life/Life';
+import Reset from '../../components/Reset/Reset';
 
 class CategoryContainer extends Component {
     constructor(props) {
@@ -16,6 +19,7 @@ class CategoryContainer extends Component {
         }
         this.changeAnswerValue = this.changeAnswerValue.bind(this);
         this.submitAnswer = this.submitAnswer.bind(this);
+        this.reset = this.reset.bind(this);
     }
     componentDidMount() {
         Api.getCategoryName(this.props.match.params.name).then(resp => {
@@ -74,7 +78,7 @@ the answer is : ${this.state.question.answer}`)
     }
     reset() {
         LocalStorage.initialize();
-        this.props.history.match('/');
+        this.props.history.push('/');
     }
     changeAnswerValue(event) {
         this.setState({
@@ -83,14 +87,25 @@ the answer is : ${this.state.question.answer}`)
     }
     render () {
         return (
-            <Category
-                categoryName={this.state.name}
-                question={this.state.question}
-                answer={this.state.answer}
-                submitCallback={this.submitAnswer}
-                changeAnswerValue={this.changeAnswerValue}
-                resetCallback={this.reset}
-            ></Category>
+            <div>
+                <Score
+                    score={localStorage.getItem('score')}
+                ></Score>
+                <Life
+                    life={localStorage.getItem('life')}                
+                ></Life>
+                <Category
+                    categoryName={this.state.name}
+                    question={this.state.question}
+                    answer={this.state.answer}
+                    submitCallback={this.submitAnswer}
+                    changeAnswerValue={this.changeAnswerValue}
+                    resetCallback={this.reset}
+                ></Category>
+                <Reset
+                    reset={this.reset}
+                ></Reset>
+            </div>
         );
     }
 }
