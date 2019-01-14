@@ -9,7 +9,8 @@ $font-color: #ffffff;
     }
     &-categories{
       margin-top: 1%;
-      margin-bottom: 1%; 
+      margin-bottom: 1%;
+      text-decoration: none; 
     }
     &-loading{
       color: $font-color;

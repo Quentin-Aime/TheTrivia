@@ -2,6 +2,7 @@ import LocalStorage from './../../helpers/LocalStorage';
 import React, { Component } from 'react';
 import Victory from './Victory';
 import { withRouter } from 'react-router-dom';
+import Reset from '../../components/Reset/Reset';
 
 class VictoryContainer extends Component {
     constructor(props) {
@@ -13,13 +14,18 @@ class VictoryContainer extends Component {
     }
     reset() {
         LocalStorage.initialize();
-        this.props.history.match('/');
+        this.props.history.push('/');
     }
     render () {
         return (
-            <Victory
-                resetCallback={this.reset}
-            ></Victory>
+            <div>
+                <Victory
+                    resetCallback={this.reset}
+                ></Victory>
+                <Reset
+                reset={this.reset}
+                ></Reset>
+            </div>
         );
     }
 }
