@@ -1,6 +1,9 @@
 $font-color: #ffffff;
 
 .category{
+    &-wrapper{
+        position: relative;
+    }
     &-title{
         margin-top: 2%;
         margin-bottom: 1%;      

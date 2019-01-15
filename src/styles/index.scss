@@ -1,9 +1,11 @@
 @import '../components/App/App.scss';
+@import '../components/Score/Score.scss';
+@import '../components/Life/Life.scss';
+@import '../components/Reset/Reset.scss';
 @import '../views/Category/Category';
 @import '../views/GameOver/GameOver';
 @import '../views/Home/Home';
 @import '../views/Victory/Victory';
-
 
 
 body {

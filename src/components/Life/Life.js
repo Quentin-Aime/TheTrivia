@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Life = ({life}) => (
-    <div>
+    <div className="life-section">
         <p>Life: {life}</p>
     </div>
 );

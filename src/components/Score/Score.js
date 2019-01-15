@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 const Score = ({score}) => (
-    <div>
+    <div className="score-section">
         <p>Score: {score}</p>
     </div>
 );

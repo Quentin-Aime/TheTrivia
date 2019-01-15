@@ -1,0 +1,12 @@
+$font-color: #ffffff;
+
+.life{
+    &-section{
+        position: absolute;
+        width: 5%;
+        margin-top: 1.5%;
+        margin-left: 85%;
+        color: $font-color;
+        font-size: 20px; 
+    } 
+}

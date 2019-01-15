@@ -1,6 +1,9 @@
 $font-color: #ffffff;
 
 .gameover{
+    &-wrapper{
+        position: relative;
+    }    
     &-title{
         margin-top: 20%;
         font-size: 90px;
