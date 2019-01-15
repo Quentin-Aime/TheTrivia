@@ -1,0 +1,12 @@
+$font-color: #ffffff;
+
+.score{
+&-section{
+    position: absolute;
+    width: 5%;
+    margin-top: 1.5%;
+    margin-left: 7%;
+    color: $font-color;
+    font-size: 20px;   
+    }
+}

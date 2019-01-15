@@ -87,7 +87,7 @@ the answer is : ${this.state.question.answer}`)
     }
     render () {
         return (
-            <div>
+            <div className="category-wrapper">
                 <Score
                     score={localStorage.getItem('score')}
                 ></Score>

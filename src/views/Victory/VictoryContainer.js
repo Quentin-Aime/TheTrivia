@@ -3,6 +3,9 @@ import React, { Component } from 'react';
 import Victory from './Victory';
 import { withRouter } from 'react-router-dom';
 import Reset from '../../components/Reset/Reset';
+import Score from '../../components/Score/Score';
+import Life from '../../components/Life/Life';
+
 
 class VictoryContainer extends Component {
     constructor(props) {
@@ -19,6 +22,12 @@ class VictoryContainer extends Component {
     render () {
         return (
             <div>
+                <Score
+                    score={localStorage.getItem('score')}
+                ></Score>
+                <Life
+                    life={localStorage.getItem('life')}                
+                ></Life>                
                 <Victory
                     resetCallback={this.reset}
                 ></Victory>

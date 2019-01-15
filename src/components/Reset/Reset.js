@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const Reset = ({reset}) => (
-    <div>
+    <div className="reset-section">
         <button onClick={reset}>Reset</button>
     </div>
 );
